@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "TesteStone@123!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql
+
+  contabilidadefuncionarios.api:
+    build:
+      context: .
+      dockerfile: ContabilidadeFuncionarios.API/Dockerfile
+    container_name: contabilidadefuncionarios.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=ContabilidadeFuncionariosDB;User=testestone;Password=TesteStone@123!;TrustServerCertificate=true;
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5084:80"
+    depends_on:
+      - sqlserver
+
+volumes:
+  sqlserverdata:

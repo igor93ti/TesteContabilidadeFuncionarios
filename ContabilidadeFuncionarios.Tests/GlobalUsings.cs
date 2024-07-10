@@ -1,0 +1,9 @@
+global using ContabilidadeFuncionarios.Application.Commands.CreateFuncionario;
+global using ContabilidadeFuncionarios.Domain.Builders;
+global using ContabilidadeFuncionarios.Domain.Entities;
+global using ContabilidadeFuncionarios.Domain.Enums;
+global using ContabilidadeFuncionarios.Domain.Interfaces;
+global using ContabilidadeFuncionarios.Domain.Interfaces.Repositories;
+global using ContabilidadeFuncionarios.Domain.Services;
+global using Moq;
+global using Xunit;
