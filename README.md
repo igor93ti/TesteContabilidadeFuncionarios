@@ -14,9 +14,11 @@ Na parte do salário eu havia ficado em dúvida se era pra mostrar no contracheq
 Utilizei de forma simples CQRS com mediatr para separar os comandos e as queries. Para uma aplicação tão simples não vi necessidade de criar 2 bases de dados (leitura e escrita).
 
 Com um pouco mais de tempo para trabalhar na aplicação seria possível efetuar algumas melhorias:
-1- incremento na cobertura dos testes
-2- validações de modelo ao persistir informações
-3- tratamento de exceções adequado
-4- adição de circuit breaker
-5- adição de logs
-6- alguns ajustes finos na comunicação entre as camadas
+<ul>
+  <li><b>Incremento na cobertura dos testes</b></li>
+  <li><b>Validações de modelo ao persistir informações</b></li>
+  <li><b>Tratamento adequado de exceções</b></li>
+  <li><b>Adição de circuit breaker</b></li>
+  <li><b>Adição de logs</b></li>
+  <li><b>Ajustes finos na comunicação entre as camadas</b></li>
+</ul>
