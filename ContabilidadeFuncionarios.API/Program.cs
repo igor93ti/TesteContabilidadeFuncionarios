@@ -68,25 +68,25 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-if (app.Environment.IsDevelopment())
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        dbContext.Database.EnsureDeleted();
-        dbContext.Database.EnsureCreated();
-
-        SeedData.Initialize(dbContext);
-    }
-}
-
-//using (var scope = app.Services.CreateScope())
+//if (app.Environment.IsDevelopment())
 //{
-//    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-//    dbContext.Database.Migrate();
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+//        dbContext.Database.EnsureDeleted();
+//        dbContext.Database.EnsureCreated();
 
-//    SeedData.Initialize(dbContext);
+//        SeedData.Initialize(dbContext);
+//    }
 //}
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate();
+
+    SeedData.Initialize(dbContext);
+}
 
 
 app.UseHttpsRedirection();
